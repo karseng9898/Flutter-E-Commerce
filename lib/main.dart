@@ -1,6 +1,8 @@
 import 'package:e_commerce_test/constants.dart';
 import 'package:flutter/material.dart';
 
+import 'screens/splash/splash_screen.dart';
+
 void main() {
   runApp(const MyApp());
 }
@@ -22,8 +24,7 @@ class MyApp extends StatelessWidget {
         ),
         visualDensity: VisualDensity.adaptivePlatformDensity,
       ),
-      home: const MyHomePage(title: 'Flutter Demo Home Page'),
+      home: const SplashScreen(),
     );
   }
 }
-
