@@ -2,6 +2,7 @@ import 'package:e_commerce_test/constants.dart';
 import 'package:e_commerce_test/size_config.dart';
 import 'package:flutter/material.dart';
 
+import '../../../components/default_button.dart';
 import './splash_content.dart';
 
 class Body extends StatefulWidget {
@@ -57,6 +58,7 @@ class _BodyState extends State<Body> {
                     horizontal: getProportionateScreenWidth(20)),
                 child: Column(
                   children: <Widget>[
+                    const Spacer(),
                     Row(
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: List.generate(
@@ -64,25 +66,12 @@ class _BodyState extends State<Body> {
                         (index) => buildDot(index: index),
                       ),
                     ),
-                    SizedBox(
-                      width: double.infinity,
-                      child: TextButton(
-                        style: TextButton.styleFrom(
-                          padding: const EdgeInsets.symmetric(vertical: 14),
-                          backgroundColor: kPrimaryColor,
-                          shape: RoundedRectangleBorder(
-                              borderRadius: BorderRadius.circular(20)),
-                        ),
-                        onPressed: () {},
-                        child: Text(
-                          "Continue",
-                          style: TextStyle(
-                            fontSize: getProportionateScreenWidth(18),
-                            color: Colors.white,
-                          ),
-                        ),
-                      ),
-                    )
+                    const Spacer(flex: 3),
+                    DefaultButton(
+                      text: "Continue",
+                      onPressed: () {},
+                    ),
+                    const Spacer(),
                   ],
                 ),
               ),
