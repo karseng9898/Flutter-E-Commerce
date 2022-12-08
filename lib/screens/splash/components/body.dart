@@ -1,8 +1,9 @@
-import 'package:e_commerce_test/constants.dart';
-import 'package:e_commerce_test/size_config.dart';
 import 'package:flutter/material.dart';
 
 import '../../../components/default_button.dart';
+import '../../../size_config.dart';
+import '../../../constants.dart';
+import '../../sign_in/sign_in_screen.dart';
 import './splash_content.dart';
 
 class Body extends StatefulWidget {
@@ -69,7 +70,9 @@ class _BodyState extends State<Body> {
                     const Spacer(flex: 3),
                     DefaultButton(
                       text: "Continue",
-                      onPressed: () {},
+                      onPressed: () {
+                        Navigator.of(context).pushNamed(SignInScreen.routeName);
+                      },
                     ),
                     const Spacer(),
                   ],
