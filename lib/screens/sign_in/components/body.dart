@@ -1,7 +1,7 @@
 import 'package:e_commerce_test/size_config.dart';
 import 'package:flutter/material.dart';
 
-import '../../../components/custom_suffix_icon.dart';
+import 'sign_form.dart';
 
 class Body extends StatelessWidget {
   const Body({super.key});
@@ -32,40 +32,6 @@ class Body extends StatelessWidget {
             ],
           ),
         ),
-      ),
-    );
-  }
-}
-
-class SignForm extends StatefulWidget {
-  const SignForm({super.key});
-
-  @override
-  State<SignForm> createState() => _SignFormState();
-}
-
-class _SignFormState extends State<SignForm> {
-  @override
-  Widget build(BuildContext context) {
-    return Form(
-      child: Column(
-        children: [
-          TextFormField(
-            keyboardType: TextInputType.emailAddress,
-            decoration: const InputDecoration(
-                labelText: "Email",
-                hintText: "Enter your email",
-                suffixIcon: CustomSuffixIcon(svgIcon: 'assets/icons/Mail.svg')),
-          ),
-          SizedBox(height: getProportionateScreenHeight(20)),
-          TextFormField(
-            obscureText: true,
-            decoration: const InputDecoration(
-                labelText: "Password",
-                hintText: "Enter your password",
-                suffixIcon: CustomSuffixIcon(svgIcon: 'assets/icons/Lock.svg')),
-          ),
-        ],
       ),
     );
   }
