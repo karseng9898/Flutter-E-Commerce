@@ -1,11 +1,12 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_svg/svg.dart';
 
 import '../../../components/custom_suffix_icon.dart';
 import '../../../components/default_button.dart';
 import '../../../components/form_error.dart';
 import '../../../constants.dart';
 import '../../../size_config.dart';
+import '../../forgot_password/forgot_password_screen.dart';
+import '../../login_success/login_success_screen.dart';
 
 class SignForm extends StatefulWidget {
   const SignForm({super.key});
@@ -47,9 +48,13 @@ class _SignFormState extends State<SignForm> {
               ),
               const Text("Remember me"),
               const Spacer(),
-              const Text(
-                "Forgot Password",
-                style: TextStyle(decoration: TextDecoration.underline),
+              GestureDetector(
+                onTap: () => Navigator.of(context)
+                    .pushNamed(ForgotPasswordScreen.routeName),
+                child: const Text(
+                  "Forgot Password",
+                  style: TextStyle(decoration: TextDecoration.underline),
+                ),
               )
             ],
           ),
@@ -60,12 +65,9 @@ class _SignFormState extends State<SignForm> {
             onPressed: () {
               if (_formKey.currentState?.validate() ?? false) {
                 _formKey.currentState?.save();
+                Navigator.of(context).pushNamed(LoginSuccessScreen.routeName);
               }
             },
-          ),
-          SocialIconButton(
-            icon: "assets/icons/facebook-2.svg",
-            onTap: () {},
           ),
         ],
       ),
@@ -132,10 +134,12 @@ class _SignFormState extends State<SignForm> {
       setState(() {
         errors.add(kEmailNullError);
       });
+      return "";
     } else if (!emailValidatorRegExp.hasMatch(value)) {
       setState(() {
         errors.add(kInvalidEmailError);
       });
+      return "";
     }
 
     return null;
@@ -148,39 +152,13 @@ class _SignFormState extends State<SignForm> {
       setState(() {
         errors.add(kPassNullError);
       });
+      return "";
     } else if (value.length < 8) {
       setState(() {
         errors.add(kShortPassError);
       });
+      return "";
     }
     return null;
-  }
-}
-
-class SocialIconButton extends StatelessWidget {
-  const SocialIconButton({
-    Key? key,
-    required this.icon,
-    required this.onTap,
-  }) : super(key: key);
-
-  final String icon;
-  final void Function() onTap;
-
-  @override
-  Widget build(BuildContext context) {
-    return InkWell(
-      onTap: onTap,
-      child: Container(
-        padding: EdgeInsets.all(getProportionateScreenWidth(12)),
-        height: getProportionateScreenWidth(40),
-        width: getProportionateScreenWidth(40),
-        decoration: const BoxDecoration(
-          color: Color(0xFFF5F6F9),
-          shape: BoxShape.circle,
-        ),
-        child: SvgPicture.asset(icon),
-      ),
-    );
   }
 }
